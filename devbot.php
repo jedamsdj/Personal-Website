@@ -3,9 +3,9 @@
 	$incoming_text   = $_REQUEST['Body'];
 
     if (empty($incoming_number)) {
-        $text = 'Nothing to see here. Move along now.'
+        $text = 'Nothing to see here. Move along now.';
     } else {
-	    $text = exec('timeout 1 python /Users/Devon/Documents/Coding/devbot/receive_texts_twilio.py ' . $incoming_number . ' ' . $incoming_text);
+	    $text = exec('timeout 1 python /home/pi/devbot/receive_texts_twilio.py ' . $incoming_number . ' ' . $incoming_text);
 	    if (empty($text)) {
 		    $text = 'Looks like something is wrong, try again in a few minutes.';
 	    }
