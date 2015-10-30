@@ -5,10 +5,7 @@
     if (empty($incoming_number)) {
         $text = 'Nothing to see here. Move along now.';
     } else {
-	    $text = exec('. /home/pi/.bash_aliases; timeout 60 /usr/bin/python /home/pi/devbot/receive_texts_twilio.py ' . $incoming_number . ' ' . $incoming_text);
-	    if (empty($text)) {
-		    $text = 'Looks like something is wrong, try again in a few minutes.';
-	    }
+	    $text = exec('. /home/pi/.bash_aliases; timeout 60 /usr/bin/python /home/pi/devbot/receive_texts_twilio.py ' . $incoming_number . ' ' . $incoming_text . ' > /dev/null 2>/dev/null &');
     }
 
 	header('content-type: text/xml');
@@ -16,5 +13,5 @@
 ?>
 
 <Response>
-	<Message><?php echo $text ?></Message>
+	<Message></Message>
 </Response>
